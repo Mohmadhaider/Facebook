@@ -24,6 +24,6 @@
       
   # Tools used
       This project use following tools
-      <h4>Facebook developer</h4>
-      <h4>Google cloud platform -> Google drive apis</h4>
-      <h4>XAMPP</h4>
+       Facebook developer
+      Google cloud platform -> Google drive apis
+      XAMPP
