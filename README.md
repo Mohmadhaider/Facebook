@@ -23,7 +23,9 @@
       This page will upload a zip file to a google drive of a particular user account after clicking on upload button.
       
   # Tools used
-      This project use following tools
-       Facebook developer
-      Google cloud platform -> Google drive apis
-      XAMPP
+  
+ 
+  This project use following tools
+  <h4>Facebook developer</h4>
+  <h4>Google cloud platform -> Google drive apis</h4>
+  <h4> XAMPP</h4>
