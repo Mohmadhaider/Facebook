@@ -197,10 +197,8 @@
      * @opt_param string linkType The type of the link.
      * @opt_param string startDateMin The beginning of the start date range.
      * @opt_param string assetSize The size of the given asset.
-     * @opt_param string searchText Field for full text search across title and merchandising text, supports link id search.
-     * @opt_param string createDateMax The end of the create date range.
-     * @opt_param string createDateMin The beginning of the create date range.
      * @opt_param string relationshipStatus The status of the relationship.
+     * @opt_param string advertiserCategory The advertiser's primary vertical.
      * @opt_param string maxResults Max number of items to return in this page. Optional. Defaults to 20.
      * @opt_param string advertiserId Limits the resulting links to the ones belonging to the listed advertisers.
      * @opt_param string pageToken The value of 'nextPageToken' from the previous page. Optional.
@@ -313,7 +311,7 @@
  *
  * <p>
  * For more information about this service, see the
- * <a href="https://developers.google.com/affiliate-network/" target="_blank">API Documentation</a>
+ * <a href="https://code.google.com/apis/gan/" target="_blank">API Documentation</a>
  * </p>
  *
  * @author Google, Inc.
@@ -338,7 +336,7 @@ class Google_GanService extends Google_Service {
     $this->advertisers = new Google_AdvertisersServiceResource($this, $this->serviceName, 'advertisers', json_decode('{"methods": {"list": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"relationshipStatus": {"enum": ["approved", "available", "deactivated", "declined", "pending"], "type": "string", "location": "query"}, "minSevenDayEpc": {"type": "number", "location": "query", "format": "double"}, "advertiserCategory": {"type": "string", "location": "query"}, "minNinetyDayEpc": {"type": "number", "location": "query", "format": "double"}, "pageToken": {"type": "string", "location": "query"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "maxResults": {"location": "query", "minimum": "0", "type": "integer", "maximum": "100", "format": "uint32"}, "roleId": {"required": true, "type": "string", "location": "path"}, "minPayoutRank": {"location": "query", "minimum": "1", "type": "integer", "maximum": "4", "format": "int32"}}, "id": "gan.advertisers.list", "httpMethod": "GET", "path": "{role}/{roleId}/advertisers", "response": {"$ref": "Advertisers"}}, "get": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"advertiserId": {"type": "string", "location": "query"}, "roleId": {"required": true, "type": "string", "location": "path"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}}, "id": "gan.advertisers.get", "httpMethod": "GET", "path": "{role}/{roleId}/advertiser", "response": {"$ref": "Advertiser"}}}}', true));
     $this->ccOffers = new Google_CcOffersServiceResource($this, $this->serviceName, 'ccOffers', json_decode('{"methods": {"list": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"advertiser": {"repeated": true, "type": "string", "location": "query"}, "projection": {"enum": ["full", "summary"], "type": "string", "location": "query"}, "publisher": {"required": true, "type": "string", "location": "path"}}, "id": "gan.ccOffers.list", "httpMethod": "GET", "path": "publishers/{publisher}/ccOffers", "response": {"$ref": "CcOffers"}}}}', true));
     $this->events = new Google_EventsServiceResource($this, $this->serviceName, 'events', json_decode('{"methods": {"list": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"orderId": {"type": "string", "location": "query"}, "sku": {"type": "string", "location": "query"}, "eventDateMax": {"type": "string", "location": "query"}, "type": {"enum": ["action", "charge", "transaction"], "type": "string", "location": "query"}, "roleId": {"required": true, "type": "string", "location": "path"}, "linkId": {"type": "string", "location": "query"}, "status": {"enum": ["active", "canceled"], "type": "string", "location": "query"}, "eventDateMin": {"type": "string", "location": "query"}, "memberId": {"type": "string", "location": "query"}, "maxResults": {"location": "query", "minimum": "0", "type": "integer", "maximum": "100", "format": "uint32"}, "advertiserId": {"type": "string", "location": "query"}, "pageToken": {"type": "string", "location": "query"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "productCategory": {"type": "string", "location": "query"}, "chargeType": {"enum": ["credit", "debit", "monthly_minimum", "other", "slotting_fee", "tier_bonus"], "type": "string", "location": "query"}, "modifyDateMin": {"type": "string", "location": "query"}, "modifyDateMax": {"type": "string", "location": "query"}, "publisherId": {"type": "string", "location": "query"}}, "id": "gan.events.list", "httpMethod": "GET", "path": "{role}/{roleId}/events", "response": {"$ref": "Events"}}}}', true));
-    $this->links = new Google_LinksServiceResource($this, $this->serviceName, 'links', json_decode('{"methods": {"insert": {"scopes": ["https://www.googleapis.com/auth/gan"], "parameters": {"roleId": {"required": true, "type": "string", "location": "path"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}}, "request": {"$ref": "Link"}, "response": {"$ref": "Link"}, "httpMethod": "POST", "path": "{role}/{roleId}/link", "id": "gan.links.insert"}, "list": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"linkType": {"enum": ["banner", "text"], "type": "string", "location": "query"}, "startDateMin": {"type": "string", "location": "query"}, "assetSize": {"repeated": true, "type": "string", "location": "query"}, "searchText": {"type": "string", "location": "query"}, "createDateMax": {"type": "string", "location": "query"}, "createDateMin": {"type": "string", "location": "query"}, "relationshipStatus": {"enum": ["approved", "available"], "type": "string", "location": "query"}, "maxResults": {"location": "query", "minimum": "0", "type": "integer", "maximum": "100", "format": "uint32"}, "advertiserId": {"repeated": true, "type": "string", "location": "query", "format": "int64"}, "pageToken": {"type": "string", "location": "query"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "startDateMax": {"type": "string", "location": "query"}, "promotionType": {"repeated": true, "enum": ["coupon", "free_gift", "free_shipping", "percent_off", "price_cut"], "type": "string", "location": "query"}, "roleId": {"required": true, "type": "string", "location": "path"}, "authorship": {"enum": ["advertiser", "publisher"], "type": "string", "location": "query"}}, "id": "gan.links.list", "httpMethod": "GET", "path": "{role}/{roleId}/links", "response": {"$ref": "Links"}}, "get": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"linkId": {"required": true, "type": "string", "location": "path", "format": "int64"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "roleId": {"required": true, "type": "string", "location": "path"}}, "id": "gan.links.get", "httpMethod": "GET", "path": "{role}/{roleId}/link/{linkId}", "response": {"$ref": "Link"}}}}', true));
+    $this->links = new Google_LinksServiceResource($this, $this->serviceName, 'links', json_decode('{"methods": {"insert": {"scopes": ["https://www.googleapis.com/auth/gan"], "parameters": {"roleId": {"required": true, "type": "string", "location": "path"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}}, "request": {"$ref": "Link"}, "response": {"$ref": "Link"}, "httpMethod": "POST", "path": "{role}/{roleId}/link", "id": "gan.links.insert"}, "list": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"linkType": {"enum": ["banner", "text"], "type": "string", "location": "query"}, "startDateMin": {"type": "string", "location": "query"}, "assetSize": {"repeated": true, "type": "string", "location": "query"}, "roleId": {"required": true, "type": "string", "location": "path"}, "relationshipStatus": {"enum": ["approved", "available"], "type": "string", "location": "query"}, "maxResults": {"location": "query", "minimum": "0", "type": "integer", "maximum": "100", "format": "uint32"}, "advertiserCategory": {"repeated": true, "enum": ["apparel_accessories", "appliances_electronics", "auto_dealer", "automotive", "babies_kids", "blogs_personal_sites", "books_magazines", "computers", "dating", "department_stores", "education", "employment", "financial_credit_cards", "financial_other", "flowers_gifts", "grocery", "health_beauty", "home_garden", "hosting_domain", "internet_providers", "legal", "media_entertainment", "medical", "movies_games", "music", "nonprofit", "office_supplies", "online_games", "outdoor", "pets", "real_estate", "restaurants", "sport_fitness", "telecom", "ticketing", "toys_hobbies", "travel", "utilities", "wholesale_relationship", "wine_spirits"], "type": "string", "location": "query"}, "advertiserId": {"repeated": true, "type": "string", "location": "query", "format": "int64"}, "pageToken": {"type": "string", "location": "query"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "startDateMax": {"type": "string", "location": "query"}, "promotionType": {"repeated": true, "enum": ["buy_get", "coupon", "free_gift", "free_gift_wrap", "free_shipping", "none", "ongoing", "percent_off", "price_cut", "product_promotion", "sale", "sweepstakes"], "type": "string", "location": "query"}, "authorship": {"enum": ["advertiser", "publisher"], "type": "string", "location": "query"}}, "id": "gan.links.list", "httpMethod": "GET", "path": "{role}/{roleId}/links", "response": {"$ref": "Links"}}, "get": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"linkId": {"required": true, "type": "string", "location": "path", "format": "int64"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "roleId": {"required": true, "type": "string", "location": "path"}}, "id": "gan.links.get", "httpMethod": "GET", "path": "{role}/{roleId}/link/{linkId}", "response": {"$ref": "Link"}}}}', true));
     $this->publishers = new Google_PublishersServiceResource($this, $this->serviceName, 'publishers', json_decode('{"methods": {"list": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"publisherCategory": {"type": "string", "location": "query"}, "relationshipStatus": {"enum": ["approved", "available", "deactivated", "declined", "pending"], "type": "string", "location": "query"}, "minSevenDayEpc": {"type": "number", "location": "query", "format": "double"}, "minNinetyDayEpc": {"type": "number", "location": "query", "format": "double"}, "pageToken": {"type": "string", "location": "query"}, "role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "maxResults": {"location": "query", "minimum": "0", "type": "integer", "maximum": "100", "format": "uint32"}, "roleId": {"required": true, "type": "string", "location": "path"}, "minPayoutRank": {"location": "query", "minimum": "1", "type": "integer", "maximum": "4", "format": "int32"}}, "id": "gan.publishers.list", "httpMethod": "GET", "path": "{role}/{roleId}/publishers", "response": {"$ref": "Publishers"}}, "get": {"scopes": ["https://www.googleapis.com/auth/gan", "https://www.googleapis.com/auth/gan.readonly"], "parameters": {"role": {"required": true, "type": "string", "location": "path", "enum": ["advertisers", "publishers"]}, "publisherId": {"type": "string", "location": "query"}, "roleId": {"required": true, "type": "string", "location": "path"}}, "id": "gan.publishers.get", "httpMethod": "GET", "path": "{role}/{roleId}/publisher", "response": {"$ref": "Publisher"}}}}', true));
 
   }
@@ -351,14 +349,13 @@ class Google_Advertiser extends Google_Model {
   public $siteUrl;
   public $contactPhone;
   public $description;
-  public $merchantCenterIds;
+  public $payoutRank;
   public $defaultLinkId;
   protected $__epcSevenDayAverageType = 'Google_Money';
   protected $__epcSevenDayAverageDataType = '';
   public $epcSevenDayAverage;
   public $commissionDuration;
   public $status;
-  public $payoutRank;
   protected $__epcNinetyDayAverageType = 'Google_Money';
   protected $__epcNinetyDayAverageDataType = '';
   public $epcNinetyDayAverage;
@@ -368,7 +365,6 @@ class Google_Advertiser extends Google_Model {
   public $item;
   public $joinDate;
   public $logoUrl;
-  public $redirectDomains;
   public $id;
   public $productFeedsEnabled;
   public $name;
@@ -408,11 +404,11 @@ class Google_Advertiser extends Google_Model {
   public function getDescription() {
     return $this->description;
   }
-  public function setMerchantCenterIds($merchantCenterIds) {
-    $this->merchantCenterIds = $merchantCenterIds;
+  public function setPayoutRank($payoutRank) {
+    $this->payoutRank = $payoutRank;
   }
-  public function getMerchantCenterIds() {
-    return $this->merchantCenterIds;
+  public function getPayoutRank() {
+    return $this->payoutRank;
   }
   public function setDefaultLinkId($defaultLinkId) {
     $this->defaultLinkId = $defaultLinkId;
@@ -437,12 +433,6 @@ class Google_Advertiser extends Google_Model {
   }
   public function getStatus() {
     return $this->status;
-  }
-  public function setPayoutRank($payoutRank) {
-    $this->payoutRank = $payoutRank;
-  }
-  public function getPayoutRank() {
-    return $this->payoutRank;
   }
   public function setEpcNinetyDayAverage(Google_Money $epcNinetyDayAverage) {
     $this->epcNinetyDayAverage = $epcNinetyDayAverage;
@@ -473,12 +463,6 @@ class Google_Advertiser extends Google_Model {
   }
   public function getLogoUrl() {
     return $this->logoUrl;
-  }
-  public function setRedirectDomains($redirectDomains) {
-    $this->redirectDomains = $redirectDomains;
-  }
-  public function getRedirectDomains() {
-    return $this->redirectDomains;
   }
   public function setId($id) {
     $this->id = $id;
@@ -512,7 +496,7 @@ class Google_Advertisers extends Google_Model {
   public function getNextPageToken() {
     return $this->nextPageToken;
   }
-  public function setItems(/* array(Google_Advertiser) */ $items) {
+  public function setItems($items) {
     $this->assertIsArray($items, 'Google_Advertiser', __METHOD__);
     $this->items = $items;
   }
@@ -651,7 +635,7 @@ class Google_CcOffer extends Google_Model {
   public function getCardBenefits() {
     return $this->cardBenefits;
   }
-  public function setRewards(/* array(Google_CcOfferRewards) */ $rewards) {
+  public function setRewards($rewards) {
     $this->assertIsArray($rewards, 'Google_CcOfferRewards', __METHOD__);
     $this->rewards = $rewards;
   }
@@ -772,7 +756,7 @@ class Google_CcOffer extends Google_Model {
   public function getIntroPurchaseTerms() {
     return $this->introPurchaseTerms;
   }
-  public function setDefaultFees(/* array(Google_CcOfferDefaultFees) */ $defaultFees) {
+  public function setDefaultFees($defaultFees) {
     $this->assertIsArray($defaultFees, 'Google_CcOfferDefaultFees', __METHOD__);
     $this->defaultFees = $defaultFees;
   }
@@ -953,7 +937,7 @@ class Google_CcOffer extends Google_Model {
   public function getBalanceTransferTerms() {
     return $this->balanceTransferTerms;
   }
-  public function setBonusRewards(/* array(Google_CcOfferBonusRewards) */ $bonusRewards) {
+  public function setBonusRewards($bonusRewards) {
     $this->assertIsArray($bonusRewards, 'Google_CcOfferBonusRewards', __METHOD__);
     $this->bonusRewards = $bonusRewards;
   }
@@ -1078,7 +1062,7 @@ class Google_CcOffers extends Google_Model {
   protected $__itemsDataType = 'array';
   public $items;
   public $kind;
-  public function setItems(/* array(Google_CcOffer) */ $items) {
+  public function setItems($items) {
     $this->assertIsArray($items, 'Google_CcOffer', __METHOD__);
     $this->items = $items;
   }
@@ -1188,7 +1172,7 @@ class Google_Event extends Google_Model {
   public function getChargeId() {
     return $this->chargeId;
   }
-  public function setProducts(/* array(Google_EventProducts) */ $products) {
+  public function setProducts($products) {
     $this->assertIsArray($products, 'Google_EventProducts', __METHOD__);
     $this->products = $products;
   }
@@ -1319,7 +1303,7 @@ class Google_Events extends Google_Model {
   public function getNextPageToken() {
     return $this->nextPageToken;
   }
-  public function setItems(/* array(Google_Event) */ $items) {
+  public function setItems($items) {
     $this->assertIsArray($items, 'Google_Event', __METHOD__);
     $this->items = $items;
   }
@@ -1341,24 +1325,15 @@ class Google_Link extends Google_Model {
   public $endDate;
   public $description;
   public $name;
-  protected $__specialOffersType = 'Google_LinkSpecialOffers';
-  protected $__specialOffersDataType = '';
-  public $specialOffers;
-  protected $__epcSevenDayAverageType = 'Google_Money';
-  protected $__epcSevenDayAverageDataType = '';
-  public $epcSevenDayAverage;
+  public $startDate;
   public $createDate;
   public $imageAltText;
-  protected $__epcNinetyDayAverageType = 'Google_Money';
-  protected $__epcNinetyDayAverageDataType = '';
-  public $epcNinetyDayAverage;
-  public $advertiserId;
   public $id;
+  public $advertiserId;
   public $impressionTrackingUrl;
   public $promotionType;
   public $duration;
   public $authorship;
-  public $startDate;
   public $availability;
   public $clickTrackingUrl;
   public $destinationUrl;
@@ -1398,17 +1373,11 @@ class Google_Link extends Google_Model {
   public function getName() {
     return $this->name;
   }
-  public function setSpecialOffers(Google_LinkSpecialOffers $specialOffers) {
-    $this->specialOffers = $specialOffers;
+  public function setStartDate($startDate) {
+    $this->startDate = $startDate;
   }
-  public function getSpecialOffers() {
-    return $this->specialOffers;
-  }
-  public function setEpcSevenDayAverage(Google_Money $epcSevenDayAverage) {
-    $this->epcSevenDayAverage = $epcSevenDayAverage;
-  }
-  public function getEpcSevenDayAverage() {
-    return $this->epcSevenDayAverage;
+  public function getStartDate() {
+    return $this->startDate;
   }
   public function setCreateDate($createDate) {
     $this->createDate = $createDate;
@@ -1422,23 +1391,17 @@ class Google_Link extends Google_Model {
   public function getImageAltText() {
     return $this->imageAltText;
   }
-  public function setEpcNinetyDayAverage(Google_Money $epcNinetyDayAverage) {
-    $this->epcNinetyDayAverage = $epcNinetyDayAverage;
+  public function setId($id) {
+    $this->id = $id;
   }
-  public function getEpcNinetyDayAverage() {
-    return $this->epcNinetyDayAverage;
+  public function getId() {
+    return $this->id;
   }
   public function setAdvertiserId($advertiserId) {
     $this->advertiserId = $advertiserId;
   }
   public function getAdvertiserId() {
     return $this->advertiserId;
-  }
-  public function setId($id) {
-    $this->id = $id;
-  }
-  public function getId() {
-    return $this->id;
   }
   public function setImpressionTrackingUrl($impressionTrackingUrl) {
     $this->impressionTrackingUrl = $impressionTrackingUrl;
@@ -1464,12 +1427,6 @@ class Google_Link extends Google_Model {
   public function getAuthorship() {
     return $this->authorship;
   }
-  public function setStartDate($startDate) {
-    $this->startDate = $startDate;
-  }
-  public function getStartDate() {
-    return $this->startDate;
-  }
   public function setAvailability($availability) {
     $this->availability = $availability;
   }
@@ -1490,73 +1447,6 @@ class Google_Link extends Google_Model {
   }
 }
 
-class Google_LinkSpecialOffers extends Google_Model {
-  protected $__priceCutType = 'Google_Money';
-  protected $__priceCutDataType = '';
-  public $priceCut;
-  protected $__priceCutMinType = 'Google_Money';
-  protected $__priceCutMinDataType = '';
-  public $priceCutMin;
-  public $freeShipping;
-  public $promotionCodes;
-  public $percentOff;
-  protected $__percentOffMinType = 'Google_Money';
-  protected $__percentOffMinDataType = '';
-  public $percentOffMin;
-  public $freeGift;
-  protected $__freeShippingMinType = 'Google_Money';
-  protected $__freeShippingMinDataType = '';
-  public $freeShippingMin;
-  public function setPriceCut(Google_Money $priceCut) {
-    $this->priceCut = $priceCut;
-  }
-  public function getPriceCut() {
-    return $this->priceCut;
-  }
-  public function setPriceCutMin(Google_Money $priceCutMin) {
-    $this->priceCutMin = $priceCutMin;
-  }
-  public function getPriceCutMin() {
-    return $this->priceCutMin;
-  }
-  public function setFreeShipping($freeShipping) {
-    $this->freeShipping = $freeShipping;
-  }
-  public function getFreeShipping() {
-    return $this->freeShipping;
-  }
-  public function setPromotionCodes($promotionCodes) {
-    $this->promotionCodes = $promotionCodes;
-  }
-  public function getPromotionCodes() {
-    return $this->promotionCodes;
-  }
-  public function setPercentOff($percentOff) {
-    $this->percentOff = $percentOff;
-  }
-  public function getPercentOff() {
-    return $this->percentOff;
-  }
-  public function setPercentOffMin(Google_Money $percentOffMin) {
-    $this->percentOffMin = $percentOffMin;
-  }
-  public function getPercentOffMin() {
-    return $this->percentOffMin;
-  }
-  public function setFreeGift($freeGift) {
-    $this->freeGift = $freeGift;
-  }
-  public function getFreeGift() {
-    return $this->freeGift;
-  }
-  public function setFreeShippingMin(Google_Money $freeShippingMin) {
-    $this->freeShippingMin = $freeShippingMin;
-  }
-  public function getFreeShippingMin() {
-    return $this->freeShippingMin;
-  }
-}
-
 class Google_Links extends Google_Model {
   public $nextPageToken;
   protected $__itemsType = 'Google_Link';
@@ -1569,7 +1459,7 @@ class Google_Links extends Google_Model {
   public function getNextPageToken() {
     return $this->nextPageToken;
   }
-  public function setItems(/* array(Google_Link) */ $items) {
+  public function setItems($items) {
     $this->assertIsArray($items, 'Google_Link', __METHOD__);
     $this->items = $items;
   }
@@ -1699,7 +1589,7 @@ class Google_Publishers extends Google_Model {
   public function getNextPageToken() {
     return $this->nextPageToken;
   }
-  public function setItems(/* array(Google_Publisher) */ $items) {
+  public function setItems($items) {
     $this->assertIsArray($items, 'Google_Publisher', __METHOD__);
     $this->items = $items;
   }
