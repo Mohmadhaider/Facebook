@@ -4,7 +4,7 @@
  <h3>Index.php</h3>
       This page contain one button which will redirect to fb-callback.php page by passing from facebook login page.
     
-  <h3>fb-callback.php</h3>
+  <h3>curl.php</h3>
       This page get facebook access token and by using that it will get album name, images, username of a particular user.
       After that it will get the required data in arrays. And redirect to home page.
      
@@ -16,9 +16,7 @@
       Download All button will use to download all button.
       Upload button will also perform same functionality rather it upload file to respective google drive accounts.
   
- <h3>slide.php</h3>
-      This page will use to display a slideshow(of a particular album) to user.
-      
+ 
  <h3>backup.php</h3>
       This page will upload a zip file to a google drive of a particular user account after clicking on upload button.
       
